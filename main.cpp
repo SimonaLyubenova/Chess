@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>
 #include "Square.h"
 #include "Board.h"
 

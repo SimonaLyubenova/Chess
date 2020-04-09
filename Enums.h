@@ -1,4 +1,4 @@
 #pragma once
 
-enum Piece { KING, QUEEN, BISHOP, KNIGHT, ROOK, PAWN, EMPTY };
+//enum Piece { KING, QUEEN, BISHOP, KNIGHT, ROOK, PAWN, EMPTY };
 enum Color { WHITE, BLACK, NONE };

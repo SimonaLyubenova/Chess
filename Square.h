@@ -1,13 +1,10 @@
 #pragma once
 #include "Enums.h"
-
-#include <iostream>
-#include <cmath>
-#include <string>
+#include "Empty.h"
 
 class Square
 {
-	Piece piece;
+	Piece* piece=nullptr;
 	Color color;
 	int x, y;
 
@@ -15,11 +12,12 @@ public:
     Square();
 	void setSpace(Square*);
 	void setEmpty();
-	void setPieceAndColor(Piece, Color);
-	const Piece getPiece();
-	const Color getColor();
+	void setPieceAndColor(Piece*, Color);
+	Piece* getPiece();
+	Color getColor();
 	void setX(int);
 	void setY(int);
 	const int getX();
 	const int getY();
+	~Square();
 };
