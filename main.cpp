@@ -1,32 +1,30 @@
 #include <iostream>
 #include <string>
-#include "chess.h"
+#include "Square.h"
+#include "Board.h"
 
 using namespace std;
 
-
-
-
-
 int main()
 {
-	Board b;
-	string s;
+	Board board;
+	string inputString;
 	bool newgame = true;
-	cout << "   _____ _    _ ______  _____ _____ \n  / ____| |  | |  ____|/ ____/ ____| \n | |    | |__| | |__  | (___| (___  \n | |    |  __  |  __|  \\___  \\___ \\ \n | |____| |  | | |____ ____) |___) | \n  \\_____|_|  |_|______|_____/_____/ \n" << endl;
-	cout << "A game by George Harter"<<endl;
+	cout << "Welcome to the Chess Game" << endl << endl;
 	cout << "Enter any key to continue" << endl;
-	cin >> s;
+	cin >> inputString;
 
-	while(newgame){
-		b.setBoard();
-		while (b.playGame());
+	while(newgame)
+    {
+		board.setBoard();
+		while (board.playGame());
 		cout << "Do you want to play again? (y for yes, anything else for no) ";
-		cin >> s;
-		if (s != "y")
-			newgame = false;
+		cin >> inputString;
+		if (inputString != "y")
+        {
+            newgame = false;
+        }
 	}
-
 
 	return 0;
 }
