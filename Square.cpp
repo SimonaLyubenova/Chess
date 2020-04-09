@@ -1,10 +1,10 @@
 #include <iostream>
+#include <cmath>
 #include "Square.h"
 
 Square::Square()
 {
-	this->piece = EMPTY;
-	this->color = NONE;
+    setEmpty();
 }
 
 void Square::setSpace(Square* space)
@@ -15,21 +15,22 @@ void Square::setSpace(Square* space)
 
 void Square::setEmpty()
 {
+    Empty* empty_piece = new Empty();
+    this->piece = empty_piece;
 	this->color = NONE;
-	this->piece = EMPTY;
 }
 
-const Piece Square::getPiece()
+Piece* Square::getPiece()
 {
 	return this->piece;
 }
 
-const Color Square::getColor()
+Color Square::getColor()
 {
 	return this->color;
 }
 
-void Square::setPieceAndColor(Piece newPiece, Color newColor)
+void Square::setPieceAndColor(Piece* newPiece, Color newColor)
 {
 	this->piece = newPiece;
 	this->color = newColor;
@@ -53,4 +54,9 @@ void Square::setY(int newY)
 const int Square::getY()
 {
     return this->y;
+}
+
+Square::~Square()
+{
+    delete this->piece;
 }

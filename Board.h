@@ -1,21 +1,19 @@
 #pragma once
-#include "Enums.h"
 #include "Square.h"
+#include "Enums.h"
+#include "King.h"
+#include "Queen.h"
+#include "Bishop.h"
+#include "Knight.h"
+#include "Rook.h"
+#include "Pawn.h"
+#include "Empty.h"
 
-#include <iostream>
-#include <cmath>
-#include <string>
+static Square board[8][8];
 
 class Board
 {
-	Square square[8][8];
 	Color turn=WHITE;
-	bool moveKing(Square* thisKing, Square* thatSpace);
-	bool moveQueen(Square* thisQueen, Square* thatSpace);
-	bool moveBishop(Square* thisBishop, Square* thatSpace);
-	bool moveKnight(Square* thisKnight, Square* thatSpace);
-	bool moveRook(Square* thisRook, Square* thatSpace);
-	bool movePawn(Square* thisPawn, Square* thatSpace);
 	bool makeMove(int x1, int y1, int x2, int y2);
 	void printBoard();
 public:
