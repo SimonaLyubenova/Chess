@@ -10,16 +10,16 @@ bool King::moveMe(int src_x, int src_y, int dest_x, int dest_y, Color src_color,
 {
     if (abs(dest_x - src_x) == 1)
     {
-		if (abs(dest_y - src_y) == 1)
-		{
-			return true;
-		}
-		else
+        if (abs(dest_y - src_y) == 1)
+        {
+            return true;
+        }
+        else
         {
             return false;
         }
     }
-	else
+    else
     {
         return false;
     }

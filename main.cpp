@@ -1,29 +1,32 @@
 #include <iostream>
-#include "Square.h"
 #include "Board.h"
 
 using namespace std;
 
+Square board[8][8];
 int main()
 {
-	Board board;
-	string inputString;
-	bool newgame = true;
-	cout << "Welcome to the Chess Game" << endl << endl;
-	cout << "Enter any key to continue" << endl;
-	cin >> inputString;
+    Board desk;
+    string inputString;
+    bool newgame = true;
+    cout << "Welcome to the Chess Game" << endl << endl;
+    cout << "Enter any key to continue" << endl;
+    cin >> inputString;
 
-	while(newgame)
+    while(newgame)
     {
-		board.setBoard();
-		while (board.playGame());
-		cout << "Do you want to play again? (y for yes, anything else for no) ";
-		cin >> inputString;
-		if (inputString != "y")
+        desk.setBoard();
+        while (desk.playGame());
+        cout << "Do you want to play again? (y for yes, anything else for no) ";
+        cin >> inputString;
+        if (inputString != "y")
         {
             newgame = false;
         }
-	}
-
-	return 0;
+        else
+        {
+            newgame = true;
+        }
+    }
+    return 0;
 }

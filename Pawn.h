@@ -5,5 +5,6 @@ class Pawn:public Piece
 {
 public:
     Pawn();
+
     virtual bool moveMe(int, int, int, int, Color, Color);
 };

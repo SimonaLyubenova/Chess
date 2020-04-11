@@ -7,7 +7,7 @@ class Piece
 
 public:
     void setName(char);
-    char getName();
+    char getName() const;
 
     virtual bool moveMe(int, int, int, int, Color, Color) {}
 };

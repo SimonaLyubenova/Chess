@@ -9,18 +9,34 @@
 #include "Pawn.h"
 #include "Empty.h"
 
-static Square board[8][8];
+extern Square board[8][8];
 
 class Board
 {
-	Color turn=WHITE;
-	bool makeMove(int x1, int y1, int x2, int y2);
-	void printBoard();
-public:
-	Square* getSquare(int x, int y);
-	void setSquare(Square* newSquare, int x, int y);
-	bool doMove();
+    Color turn=WHITE;
 
-	void setBoard();
-	bool playGame();
+    void setTurnColor(Color newTurn);
+    Color getTurnColor() const;
+
+    bool checkOutOfBounds(int x1, int y1, int x2, int y2);
+    bool checkForDifferentColorPieces(Square* source, Square* destination);
+    bool checkIfSourcePieceIsNoEmpty(Square* source);
+    bool makeMoveIfValid(int x1, int y1, int x2, int y2);
+
+    bool checkIfDestinationIsKing(Square* destination);
+    bool checkIfSourceIsWhite(Square* source);
+
+    void setPiecesWithoutPawnsAndEmpty();
+    void setPawns();
+    void setEmptyPieces();
+    void setPiecesOnTheDesk();
+    void printBoard();
+
+    Square* getSquare(int x, int y);
+    void setSquare(Square* newSquare, int x, int y);
+    bool doMove();
+
+public:
+    void setBoard();
+    bool playGame();
 };
