@@ -95,16 +95,18 @@ bool Board::doMove()
         sourceY = position[1] - 48;
         destinationX = position[2] - 48;
         destinationY = position[3] - 48;
+
         source = getSquare(sourceX, sourceY);
         destination = getSquare(destinationX, destinationY);
 
-        if (getSquare(sourceX, sourceY)->getColor() == turn)
+        Color sourceColor = source->getColor();
+        if (sourceColor == turn)
         {
             if (checkIfDestinationIsKing(destination))
             {
                 isDestinationKing = true;
             }
-            if (!makeMoveIfValid(sourceX, sourceY, destinationX, destinationY))
+            if (!makeMoveIfValid(source, destination))
             {
                 cout << "Invalid move, try again." << endl;
                 isDestinationKing = false;
@@ -215,12 +217,21 @@ bool Board::playGame()
     return doMove();
 }
 
-bool Board::checkOutOfBounds(int x1, int y1, int x2, int y2)
+bool Board::checkOutOfBounds(Square* source, Square* destination)
 {
-    if (x1 < 0 || x1 > 7 || y1 < 0 || y1 > 7 || x2 < 0 || x2 > 7 || y2 < 0 || y2 > 8)
+    int sourceX = source->getX();
+    int sourceY = source->getY();
+    int destinationX = destination->getX();
+    int destinationY = destination->getY();
+
+    if (sourceX < 0 || 7 < sourceX ||
+            sourceY < 0 || 7 < sourceY ||
+            destinationX < 0 || 7 < destinationX ||
+            destinationY < 0 || 7 < destinationY)
     {
         return true;
     }
+
     return false;
 }
 
@@ -245,16 +256,13 @@ bool Board::checkIfSourcePieceIsEmpty(Square* source)
     return true;
 }
 
-bool Board::makeMoveIfValid(int sourceX, int sourceY, int destinationX, int destinationY)
+bool Board::makeMoveIfValid(Square* source, Square* destination)
 {
-    if (checkOutOfBounds(sourceX, sourceY, destinationX, destinationY))
+    if (checkOutOfBounds(source, destination))
     {
         cout << "One of your inputs was out of bounds" << endl;
         return false;
     }
-
-    Square* source = getSquare(sourceX, sourceY);
-    Square* destination = getSquare(destinationX, destinationY);
 
     if (checkForSameColorPieces(source, destination))
     {
@@ -264,7 +272,17 @@ bool Board::makeMoveIfValid(int sourceX, int sourceY, int destinationX, int dest
 
     if (!checkIfSourcePieceIsEmpty(source))
     {
-        if (source->getPiece()->moveMe(sourceX, sourceY, destinationX, destinationY, source->getColor(), destination->getColor()))
+        int sourceX = source->getX();
+        int sourceY = source->getY();
+        int destinationX = destination->getX();
+        int destinationY = destination->getY();
+
+        pair<int,int> sourceCoordinates = make_pair(sourceX, sourceY);
+        pair<int,int> destinationCoordinates = make_pair(destinationX, destinationY);
+        Color sourceColor = source->getColor();
+        Color destinationColor = destination->getColor();
+
+        if (source->getPiece()->moveMe(sourceCoordinates, destinationCoordinates, sourceColor, destinationColor))
         {
             destination->setSpace(source);
             source->setEmpty();

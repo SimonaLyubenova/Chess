@@ -7,9 +7,12 @@ Bishop::Bishop()
     setName('B');
 }
 
-bool Bishop::moveMe(int sourceX, int sourceY, int destinationX, int destinationY, Color source_color, Color destination_color)
+bool Bishop::moveMe(std::pair<int,int> sourceCoordinates, std::pair<int,int> destinationCoordinates, Color source_color, Color destination_color)
 {
-    bool invalid = false;
+    int sourceX = sourceCoordinates.first;
+    int sourceY = sourceCoordinates.second;
+    int destinationX = destinationCoordinates.first;
+    int destinationY = destinationCoordinates.second;
 
     if (abs(sourceX - destinationX) == abs(sourceY - destinationY))
     {
@@ -30,12 +33,5 @@ bool Bishop::moveMe(int sourceX, int sourceY, int destinationX, int destinationY
         return false;
     }
 
-    if (invalid == false)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return true;
 }

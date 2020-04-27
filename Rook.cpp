@@ -7,9 +7,12 @@ Rook::Rook()
     setName('R');
 }
 
-bool Rook::moveMe(int sourceX, int sourceY, int destinationX, int destinationY, Color source_color, Color destination_color)
+bool Rook::moveMe(std::pair<int,int> sourceCoordinates, std::pair<int,int> destinationCoordinates, Color source_color, Color destination_color)
 {
-    bool invalid = false;
+    int sourceX = sourceCoordinates.first;
+    int sourceY = sourceCoordinates.second;
+    int destinationX = destinationCoordinates.first;
+    int destinationY = destinationCoordinates.second;
 
     if (sourceX != destinationX || sourceY != destinationY)
     {
@@ -45,12 +48,6 @@ bool Rook::moveMe(int sourceX, int sourceY, int destinationX, int destinationY, 
             }
         }
     }
-    if (invalid == false)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+
+    return true;
 }
