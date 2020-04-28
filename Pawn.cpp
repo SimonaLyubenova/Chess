@@ -6,23 +6,22 @@ Pawn::Pawn()
     setName('P');
 }
 
-bool Pawn::moveMe(int src_x, int src_y, int dest_x, int dest_y, Color src_color, Color dest_color)
+bool Pawn::moveMe(std::pair<int,int> sourceCoordinates, std::pair<int,int> destinationCoordinates, Color source_color, Color destination_color)
 {
-    bool invalid = false;
-    int pawnX = src_x;
-    int pawnY = src_y;
-    int thatX = dest_x;
-    int thatY = dest_y;
+    int sourceX = sourceCoordinates.first;
+    int sourceY = sourceCoordinates.second;
+    int destinationX = destinationCoordinates.first;
+    int destinationY = destinationCoordinates.second;
 
-    if (src_color == WHITE)
+    if (source_color == WHITE)
     {
-        if (pawnX == thatX && thatY == pawnY + 1 && dest_color == NONE)
+        if (sourceX == destinationX && destinationY == sourceY + 1 && destination_color == NONE)
         {
             return true;
         }
         else
         {
-            if ((pawnX + 1 == thatX || pawnX - 1 == thatX) && pawnY + 1 == thatY  && dest_color == BLACK)
+            if ((sourceX + 1 == destinationX || sourceX - 1 == destinationX) && sourceY + 1 == destinationY && destination_color == BLACK)
             {
                 return true;
             }
@@ -34,15 +33,15 @@ bool Pawn::moveMe(int src_x, int src_y, int dest_x, int dest_y, Color src_color,
     }
     else
     {
-        if (src_color == BLACK)
+        if (source_color == BLACK)
         {
-            if (pawnX == thatX && thatY == pawnY - 1 && dest_color == NONE)
+            if (sourceX == destinationX && destinationY == sourceY - 1 && destination_color == NONE)
             {
                 return true;
             }
             else
             {
-                if ((pawnX + 1 == thatX || pawnX - 1 == thatX) && pawnY - 1 == thatY  && src_color == WHITE)
+                if ((sourceX + 1 == destinationX || sourceX - 1 == destinationX) && sourceY - 1 == destinationY && destination_color == WHITE)
                 {
                     return true;
                 }
@@ -57,4 +56,6 @@ bool Pawn::moveMe(int src_x, int src_y, int dest_x, int dest_y, Color src_color,
             return false;
         }
     }
+
+    return true;
 }

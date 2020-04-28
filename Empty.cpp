@@ -3,5 +3,5 @@
 
 Empty::Empty()
 {
-     setName('E');
+    setName('E');
 }

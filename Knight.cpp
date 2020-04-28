@@ -6,14 +6,15 @@ Knight::Knight()
     setName('H');
 }
 
-bool Knight::moveMe(int src_x, int src_y, int dest_x, int dest_y, Color src_color, Color dest_color)
+bool Knight::moveMe(std::pair<int,int> sourceCoordinates, std::pair<int,int> destinationCoordinates, Color source_color, Color destination_color)
 {
-    int knightX = src_x;
-    int knightY = src_y;
-    int thatX = dest_x;
-    int thatY = dest_y;
+    int sourceX = sourceCoordinates.first;
+    int sourceY = sourceCoordinates.second;
+    int destinationX = destinationCoordinates.first;
+    int destinationY = destinationCoordinates.second;
 
-    if ((abs(knightX - thatX) == 2 && abs(knightY - thatY) == 1) || (abs(knightX - thatX) == 1 && abs(knightY - thatY) == 2))
+    if ((abs(sourceX - destinationX) == 2 && abs(sourceY - destinationY) == 1) ||
+            (abs(sourceX - destinationX) == 1 && abs(sourceY - destinationY) == 2))
     {
         return true;
     }
@@ -21,4 +22,6 @@ bool Knight::moveMe(int src_x, int src_y, int dest_x, int dest_y, Color src_colo
     {
         return false;
     }
+
+    return true;
 }

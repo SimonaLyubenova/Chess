@@ -5,6 +5,5 @@ class Rook:public Piece
 {
 public:
     Rook();
-
-    virtual bool moveMe(int, int, int, int, Color, Color);
+    virtual bool moveMe(std::pair<int,int>, std::pair<int,int>, Color, Color);
 };

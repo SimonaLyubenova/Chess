@@ -28,5 +28,6 @@ int main()
             newgame = true;
         }
     }
+
     return 0;
 }

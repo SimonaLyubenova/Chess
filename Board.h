@@ -18,22 +18,21 @@ class Board
     void setTurnColor(Color newTurn);
     Color getTurnColor() const;
 
-    bool checkOutOfBounds(int x1, int y1, int x2, int y2);
-    bool checkForDifferentColorPieces(Square* source, Square* destination);
-    bool checkIfSourcePieceIsNoEmpty(Square* source);
-    bool makeMoveIfValid(int x1, int y1, int x2, int y2);
+    bool checkOutOfBounds(Square*, Square*);
+    bool checkForSameColorPieces(Square*, Square*);
+    bool checkIfSourcePieceIsEmpty(Square*);
+    bool makeMoveIfValid(Square*, Square*);
 
-    bool checkIfDestinationIsKing(Square* destination);
-    bool checkIfSourceIsWhite(Square* source);
+    bool checkIfDestinationIsKing(Square*);
 
     void setPiecesWithoutPawnsAndEmpty();
     void setPawns();
     void setEmptyPieces();
-    void setPiecesOnTheDesk();
+    void setAllPiecesOnTheDesk();
     void printBoard();
 
-    Square* getSquare(int x, int y);
-    void setSquare(Square* newSquare, int x, int y);
+    Square* getSquare(int, int);
+    void setSquare(Square*, int, int);
     bool doMove();
 
 public:
